@@ -1,0 +1,24 @@
+// global
+button:focus {outline:0;}
+
+//landingPage
+@import "landingPage/test";
+@import "landingPage/arrowAnimation";
+@import "landingPage/background";
+@import "landingPage/scrollAnimation";
+@import "landingPage/text";
+@import "landingPage/countryPhoto";
+
+// Core variables and mixins
+@import "base/variables";
+@import "base/mixins";
+
+// Global CSS
+@import "base/page";
+
+// Components
+@import "components/buttons";
+@import "components/navbar";
+
+// Layout
+@import "layout/portfolio";

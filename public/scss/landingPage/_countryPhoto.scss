@@ -1,0 +1,9 @@
+#photo{
+    transition: 500ms;
+    background-color:rgba(0, 0, 0, 0.0);
+}
+
+#photo:hover {
+    transition: 500ms;
+    background-color:rgba(0, 0, 0, 0.5);
+}

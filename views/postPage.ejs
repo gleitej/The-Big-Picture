@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<head>
+  <title>postPage</title>
+
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="postPageScss/postPage.css" />
+</head>
+<body>
+  <div class="container" style="padding-top: 10%; width: 60%;">
+    <div class="row justify-content-center">
+      <button
+        class="btn btn-primary col-3"
+        style="margin-bottom: 20px;"
+        onclick="location.href='/home'"
+      >
+        View home page
+      </button>
+    </div>
+    <div class="row justify-content-center">
+      <button
+        class="btn btn-outline-danger col-3"
+        style="margin-bottom: 20px;"
+        onclick="location.href='/admin/logout'"
+      >
+        logout
+      </button>
+    </div>
+
+    <div style="background-color: white;  border-radius: 5%; padding: 5%;">
+      <form action="/admin" method="POST" enctype="multipart/form-data">
+        <label><strong>Add a country</strong></label>
+
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            name="country"
+            placeholder="country"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            name="visaInfo"
+            placeholder="Visa info"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            name="dateVisted"
+            placeholder="Dates visited"
+          />
+        </div>
+        <div class="form-group">
+          <label for="bodyText"><strong>Post</strong></label>
+          <textarea
+            name="bodyText"
+            class="form-control"
+            id="bodyText"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="travelAdvice"><strong>Travel Advice</strong></label>
+          <textarea
+            name="travelAdvice"
+            class="form-control"
+            id="travelAdvice"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="cont"
+            ><strong>What area is this country in</strong></label
+          >
+          <select name="countryId" class="form-control" id="cont">
+            <option>choose one</option>
+            <option name="europe">Europe</option>
+            <option name="middleEast">Middle East</option>
+            <option name="asia">Asia</option>
+            <option name="centralAsia">Central Asia</option>
+            <option name="northAmerica">North America</option>
+            <option name="southAmerica">South America</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 5%;">
+          <strong>Choose home page photo to</strong>
+          <input
+            id="input-b1"
+            name="file"
+            type="file"
+            class="file"
+            multiple="true"
+            data-browse-on-zone-click="true"
+          />
+        </div>
+
+        <div class="form-group" style="padding: auto 5%;">
+          <button
+            class="btn btn-primary btn-lg btn-default btn-block"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top: 10%; width: 60%;">
+    <div class="container" style="margin: 10% 0;"></div>
+    <div class="row justify-content-center">
+      <% countrySection.forEach(e => { %>
+
+      <div
+        class="col-lg-4 col-sm-6"
+        style="margin: 5%; height: 250px; width: 200px; background-image: url(<%=e.countryPhoto%>); color: black; background-position: center; background-repeat:  no-repeat; background-size:  cover; border-radius: 15px;"
+      >
+        <div
+          style="text-align: center; margin-top: 40px;"
+          class="row justify-content-center"
+        >
+          <h4 class="col-12">
+            <%= e.country %>
+          </h4>
+        </div>
+
+        <div class="row justify-content-center" style="margin: 120px 0 0 25px;">
+          <div col="6">
+            <button
+              style="padding: 7px 20px 6px 20px"
+              class=" btn btn-outline-light"
+              onclick="location.href='/admin/edit/<%= e._id %>'"
+            >
+              Edit
+            </button>
+          </div>
+
+          <div class="col-6">
+            <form
+              action="/admin/delete/<%= e._id %>?_method=DELETE"
+              method="POST"
+            >
+              <button type="submit" class=" btn btn-outline-light">
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <% }) %>
+    </div>
+  </div>
+
+  <% include partials/footer %>
+</body>

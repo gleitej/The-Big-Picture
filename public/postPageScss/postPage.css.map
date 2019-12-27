@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,IAAI,CAAC;EACD,gBAAgB,EAAE,2EAA2E;EAC7F,mBAAmB,EAAE,aAAa;EAClC,iBAAiB,EAAG,SAAS;EAC7B,qBAAqB,EAAE,KAAK;EAC5B,eAAe,EAAG,KAAK;EACvB,gBAAgB,EAAE,IAAI;CAEzB",
+    "sources": [
+        "postPage.scss",
+        "styles/_styles.scss"
+    ],
+    "names": [],
+    "file": "postPage.css"
+}

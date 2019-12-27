@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+    <head>
+        
+        <title>postPage</title>
+        
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="postPageScss/postPage.css">
+    </head>
+    <body>
+         
+        <div class="container" style="padding-bottom: 5%; padding-top: 5%; width: 60%;">
+            <form action="/admin/edit/<%= foundCountry._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <h2 style="text-align: center; padding-bottom: 2%;"><strong>Edit: </strong> <%= foundCountry.country %></h2>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="foundCountry[country]" value="<%= foundCountry.country %>">
+                </div>
+
+                <div class="form-group">
+                    <strong>Visa info</strong>
+                    <input class="form-control" type="text" name="foundCountry[visaInfo]" value="<%= foundCountry.visaInfo %>">
+                </div>
+
+                <div class="form-group">
+                    <strong>Date visited</strong>
+                    <input class="form-control" type="text" name="foundCountry[dateVisited]" value="<%= foundCountry.dateVisited %>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bodyText"><strong>My Travels in <%=foundCountry.country%></strong></label>
+                    <textarea name="foundCountry[bodyText]" class="form-control" id="bodyText" rows="10"><%=foundCountry.bodyText%></textarea>
+                </div>
+
+                <div class="form-group">
+                        <label for="bodyText"><strong>Travel Advice</strong></label>
+                        <textarea name="foundCountry[travelAdvice]" class="form-control" id="bodyText" rows="10"><%=foundCountry.travelAdvice%></textarea>
+                    </div>
+    
+
+                <div class="form-group">
+                    <label for="cont"><strong>Change what area this country in</strong></label>
+                    <select name="foundCountry[countryId]" class="form-control" id="cont">
+                        <option name="<%=foundCountry.countryId%>"><%=foundCountry.countryId%></option>
+                        <option name="europe">Europe</option>
+                        <option name="middleEast">Middle East</option>
+                        <option name="asia">Asia</option>
+                        <option name="centralAsia">Central Asia</option>
+                        <option name="northAmerica">North America</option>
+                        <option name="southAmerica">South America</option>   
+                    </select>
+                </div>
+
+                <div class="row justify-content-center" style=" margin-bottom: 5%">
+                    <div style="margin-top: 2rem;" class="col-12 col-md-6">
+                        <div id="photo"  class="card bg-none text-white">
+                            <img src="<%=foundCountry.countryPhoto%>" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <h2 style="text-align: center; margin-top: 20%;"> <%=foundCountry.country%></h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center form-group" style="margin-bottom: 5%;">
+
+                        <div class="col-12" style="text-align: center;">
+                            <strong >Choose new photo</strong>
+                        </div>
+
+                        <div class="col-12" style="text-align: center; margin-left: 5rem;">
+                            <input id="input-b1" name="file" type="file" class="file" data-browse-on-zone-click="true">
+                        </div>
+
+                    </div>
+                            
+                </div>
+                
+
+                <div class="form-group" style="padding: auto 5%;">
+                    <button class="btn btn-success btn-lg btn-default btn-block" type="submit">Submit!</button>
+                </div>
+            </form>
+                <button type="button" style="float:right;" class="btn btn-info"  onclick="location.href='/admin'">Back</button>
+        </div>
+
+<% include partials/footer %>

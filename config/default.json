@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://banjopct:BanjoDev96@cluster0-3ebwl.mongodb.net/countryContent?retryWrites=true&w=majority"
+}
