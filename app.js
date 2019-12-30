@@ -16,7 +16,7 @@ app.set('views', './views');
 // === Passport config
 app.use(
   require('express-session')({
-    secret: 'shooting for the moon',
+    secret: 'KEY',
     resave: false,
     saveUninitialized: false
   })

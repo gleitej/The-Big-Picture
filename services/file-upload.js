@@ -4,17 +4,16 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const router = express.Router();
 
-
 // move keys to seperate module
 aws.config.update({
-    accessKeyId : 'AKIAJERPYIG5BMEHGVRQ',
-    secretAccessKey : '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',
-    region: 'us-east-1'
+  accessKeyId: 'KEY',
+  secretAccessKey: 'KEY',
+  region: 'KEY'
 });
 const s3 = new aws.S3();
 
 // file filter
-function checkFileType(file, cb){
+function checkFileType(file, cb) {
   // allowed ext
   const filetypes = /jpeg|jpg|png|gif|cr2/;
   // check ext
@@ -22,24 +21,24 @@ function checkFileType(file, cb){
   // check mime type
   const mimetype = filetypes.test(file.mimetype);
 
-  if(mimetype && extname){
+  if (mimetype && extname) {
     return cb(null, true);
-  }else{
-    cb('Error: images only')
+  } else {
+    cb('Error: images only');
   }
-};
- 
+}
+
 const upload = multer({
   storage: multerS3({
     s3: s3,
     bucket: 'shootforthemoon-photos',
     acl: 'public-read',
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    metadata: function (req, file, cb) {
-      cb(null, {fieldName: file.fieldname});
+    metadata: function(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
     },
-    key: function (req, file, cb) {
-      cb(null, Date.now().toString())
+    key: function(req, file, cb) {
+      cb(null, Date.now().toString());
     }
   })
 });
